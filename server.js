@@ -33,7 +33,8 @@ Storage.prototype.deleteItem = function(indexDelete){
 };
 
 Storage.prototype.editItem = function(request){
-    var edit = this.items[request.body.id].name = request.body.name;
+    this.items[request.body.id].name = request.body.name;
+    var edit = this.items[request.body.id];
     return edit;
 };
 
@@ -86,3 +87,7 @@ app.put('/items/:id', jsonParser, function(request, response){
 
 app.listen(process.env.PORT || 8080);
 console.log("Shopping List Online");
+
+//exports for testing
+exports.app = app;
+exports.storage = storage;
